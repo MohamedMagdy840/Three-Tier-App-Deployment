@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Service        # ClusterIP by default
+metadata:
+  name: db-tier-svc
+spec:
+  selector: 
+    app: database-tier
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
