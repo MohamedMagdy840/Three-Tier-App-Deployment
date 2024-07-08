@@ -24,7 +24,7 @@
 
 ```bash
 git clone https://github.com/yourusername/three-tier-app.git
-cd three-tier-app
+cd Three-Tier-App-Deployment
 ```
 
 ### 2\. Configure Jenkins
