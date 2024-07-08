@@ -31,11 +31,11 @@ cd three-tier-app
 
 **Set up Jenkins with the necessary plugins and credentials:**
 
-*   **AWS Credentials:** Configure AWS credentials in Jenkins for accessing ECR and EKS.
+**AWS Credentials:** Configure AWS credentials in Jenkins for accessing ECR and EKS.
     
-*   **Docker:** Ensure Docker is installed and configured on the Jenkins server.
+**Docker:** Ensure Docker is installed and configured on the Jenkins server.
     
-*   **GitHub Webhook:** Set up a GitHub webhook to trigger the Jenkins pipeline on code pushes.
+**GitHub Webhook:** Set up a GitHub webhook to trigger the Jenkins pipeline on code pushes.
     
 
 **Details:**
