@@ -52,7 +52,7 @@ cd three-tier-app
 
 **Details:** The Jenkinsfile defines the stages for logging into AWS ECR, building Docker images, pushing them to ECR, deploying them to Kubernetes, setting up the Nginx Ingress controller, and printing the load balancer DNS.
 
-#### Enviroment Variables
+### Enviroment Variables
 pipeline {
     agent any
     environment {
@@ -72,7 +72,7 @@ pipeline {
     }
 
 
-#### Login to AWS ECR
+### Login to AWS ECR
 
     stages {
         stage('Login to AWS ECR') {
@@ -86,7 +86,7 @@ pipeline {
         }
 
 
-#### Configure kubectl for EKS
+### Configure kubectl for EKS
 
         stage('Configure kubectl for EKS') {
             steps {
@@ -119,7 +119,7 @@ pipeline {
             }
         }
 
-#### Deploy Frontend, Backend, and MongoDB
+### Deploy Frontend, Backend, and MongoDB
         stage('Deploy Frontend, Backend, and MongoDB') {
             steps {
                 script {
@@ -133,7 +133,7 @@ pipeline {
             }
         }
 
-#### Deploy Nginx Ingress Controller
+### Deploy Nginx Ingress Controller
         stage('Deploy Nginx Ingress Controller') {
             steps {
                 script {
@@ -147,7 +147,7 @@ pipeline {
             }
         }
 
-#### Initialize Nginx Ingress Controller
+### Initialize Nginx Ingress Controller
         stage('Initialize Nginx Ingress Controller') {
             steps {
                 sleep time: 20, unit: 'SECONDS'
@@ -155,7 +155,7 @@ pipeline {
             }
         }
 
-#### Deploy Ingress Resource
+### Deploy Ingress Resource
         stage('Deploy Ingress Resource') {
             steps {
                 script {
@@ -166,7 +166,7 @@ pipeline {
             }
         }
 
-#### Fetch Load Balancer DNS
+### Fetch Load Balancer DNS
         stage('Fetch Load Balancer DNS') {
             steps {
                 sleep time: 30, unit: 'SECONDS'
@@ -174,7 +174,7 @@ pipeline {
             }
         }
 
-#### Print DNS of Load Balancer
+### Print DNS of Load Balancer
         stage('Print DNS of Load Balancer') {
             steps {
                 script {
@@ -203,11 +203,11 @@ pipeline {
 Files and Directories
 ---------------------
 
-*   **Docker/frontend/Dockerfile:** Dockerfile for the web tier.
+   **Docker/frontend/Dockerfile:** Dockerfile for the web tier.
     
-*   **Docker/backend/Dockerfile:** Dockerfile for the logical tier.
+   **Docker/backend/Dockerfile:** Dockerfile for the logical tier.
     
-*   **k8s:** Directory containing Kubernetes deployment files.
+   **k8s:** Directory containing Kubernetes deployment files.
     
     *   **/frontend:** Deployment files for the web tier.
         
@@ -215,9 +215,9 @@ Files and Directories
         
     *   **/mongo:** Deployment files for the database tier.
         
-*   **ingress.yaml:** Deployment file for the ingress routing.
+   **ingress.yaml:** Deployment file for the ingress routing.
     
-*   **Jenkinsfile:** Jenkins pipeline script.
+   **Jenkinsfile:** Jenkins pipeline script.
     
 
 **Detailed Explanation:**
