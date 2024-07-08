@@ -58,7 +58,7 @@ cd three-tier-app
         agent any
         environment {
             AWS_REGION = 'us-east-1'   		//'your-aws-region'
-            AWS_ACCOUNT_ID = '975049995182'		//'your-aws-account-id'
+            AWS_ACCOUNT_ID = 'your-aws-account-id'		//'your-aws-account-id'
             ECR_REPOSITORY_1 = 'public.ecr.aws/w2k2d3f8/frontend:latest'	//'your-ecr-repo-1'
             ECR_REPOSITORY_2 = 'public.ecr.aws/w2k2d3f8/backend:latest'	//'your-ecr-repo-2'
             DOCKER_IMAGE_1 = 'frontend'		//'frontend'
@@ -68,8 +68,7 @@ cd three-tier-app
             CLUSTER_NAME = '3-tier-cluster'
             AWS_ACCESS_KEY_ID = credentials('aws-access-key')
             AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')        
-            SLACK_CHANNEL = '#your-slack-channel'  // Replace with your Slack channel
-            SLACK_CREDENTIAL_ID = 'slack-webhook'  // The ID of your Slack webhook credentials in Jenkins
+
         }
 
 
@@ -80,7 +79,8 @@ cd three-tier-app
             steps {
                 script {
                     sh '''
-                    aws ecr-public get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin public.ecr.aws/w2k2d3f8
+                    aws ecr-public get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin public.ecr.aws/w2k2d3f8  
+                    //change {public.ecr.aws/w2k2d3f8} with your repo link
                     '''
                 }
             }
@@ -105,7 +105,8 @@ cd three-tier-app
                 script {
                     // Build and push the first Docker image
                     sh '''
-                    docker build -t ${DOCKER_IMAGE_1} -f ./Docker/frontend/Dockerfile Docker/frontend/
+                    docker build -t ${DOCKER_IMAGE_1} -f ./Docker/frontend/Dockerfile Docker/frontend/  
+                    //{./Docker/frontend/Dockerfile }path of Dockerfile and { Docker/frontend/} path of files Docker file needed
                     docker tag ${DOCKER_IMAGE_1}:latest ${ECR_REPOSITORY_1}
                     docker push ${ECR_REPOSITORY_1}
                     '''
@@ -113,6 +114,7 @@ cd three-tier-app
                     // Build and push the second Docker image
                     sh '''
                     docker build -t ${DOCKER_IMAGE_2} -f ./Docker/backend/Dockerfile Docker/backend/
+                    //{./Docker/backend/Dockerfile }path of Dockerfile and { Docker/backtend/} path of files Docker file needed
                     docker tag ${DOCKER_IMAGE_2}:latest ${ECR_REPOSITORY_2}
                     docker push ${ECR_REPOSITORY_2}
                     '''
