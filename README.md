@@ -53,23 +53,24 @@ cd three-tier-app
 **Details:** The Jenkinsfile defines the stages for logging into AWS ECR, building Docker images, pushing them to ECR, deploying them to Kubernetes, setting up the Nginx Ingress controller, and printing the load balancer DNS.
 
 ### Enviroment Variables
-pipeline {
-    agent any
-    environment {
-        AWS_REGION = 'us-east-1'   		//'your-aws-region'
-        AWS_ACCOUNT_ID = '975049995182'		//'your-aws-account-id'
-        ECR_REPOSITORY_1 = 'public.ecr.aws/w2k2d3f8/frontend:latest'	//'your-ecr-repo-1'
-        ECR_REPOSITORY_2 = 'public.ecr.aws/w2k2d3f8/backend:latest'	//'your-ecr-repo-2'
-        DOCKER_IMAGE_1 = 'frontend'		//'frontend'
-        DOCKER_IMAGE_2 = 'backend'		//'backend'
-        KUBE_NAMESPACE = 'default'		//'default'
-        INGRESS_NAMESPACE = 'ingress-nginx'	//'ingress-nginx'
-        CLUSTER_NAME = '3-tier-cluster'
-        AWS_ACCESS_KEY_ID = credentials('aws-access-key')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')        
-        SLACK_CHANNEL = '#your-slack-channel'  // Replace with your Slack channel
-        SLACK_CREDENTIAL_ID = 'slack-webhook'  // The ID of your Slack webhook credentials in Jenkins
-    }
+
+    pipeline {
+        agent any
+        environment {
+            AWS_REGION = 'us-east-1'   		//'your-aws-region'
+            AWS_ACCOUNT_ID = '975049995182'		//'your-aws-account-id'
+            ECR_REPOSITORY_1 = 'public.ecr.aws/w2k2d3f8/frontend:latest'	//'your-ecr-repo-1'
+            ECR_REPOSITORY_2 = 'public.ecr.aws/w2k2d3f8/backend:latest'	//'your-ecr-repo-2'
+            DOCKER_IMAGE_1 = 'frontend'		//'frontend'
+            DOCKER_IMAGE_2 = 'backend'		//'backend'
+            KUBE_NAMESPACE = 'default'		//'default'
+            INGRESS_NAMESPACE = 'ingress-nginx'	//'ingress-nginx'
+            CLUSTER_NAME = '3-tier-cluster'
+            AWS_ACCESS_KEY_ID = credentials('aws-access-key')
+            AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')        
+            SLACK_CHANNEL = '#your-slack-channel'  // Replace with your Slack channel
+            SLACK_CREDENTIAL_ID = 'slack-webhook'  // The ID of your Slack webhook credentials in Jenkins
+        }
 
 
 ### Login to AWS ECR
@@ -203,11 +204,11 @@ pipeline {
 Files and Directories
 ---------------------
 
-   **Docker/frontend/Dockerfile:** Dockerfile for the web tier.
+*   **Docker/frontend/Dockerfile:** Dockerfile for the web tier.
     
-   **Docker/backend/Dockerfile:** Dockerfile for the logical tier.
+*  **Docker/backend/Dockerfile:** Dockerfile for the logical tier.
     
-   **k8s:** Directory containing Kubernetes deployment files.
+*   **k8s:** Directory containing Kubernetes deployment files.
     
     *   **/frontend:** Deployment files for the web tier.
         
