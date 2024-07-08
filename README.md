@@ -216,7 +216,7 @@ Files and Directories
         
     *   **/backend:** Deployment files for the logical tier.
         
-    *   **/mongo:** Deployment files for the database tier.
+    *   **/mongo-db:** Deployment files for the database tier.
         
    **ingress.yaml:** Deployment file for the ingress routing.
     
@@ -235,7 +235,7 @@ Files and Directories
         
     *   **/backend:** Specifies the deployment configuration for the logical tier.
         
-    *   **/mongo:** Specifies the deployment configuration for the database tier.
+    *   **/mongo-db:** Specifies the deployment configuration for the database tier.
         
 *   **ingress.yaml:** Specifies the ingress rules for routing traffic to the services.
     
